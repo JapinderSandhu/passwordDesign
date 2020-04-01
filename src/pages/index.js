@@ -83,7 +83,7 @@ const IndexPage = () => {
 
     }
 
-    // if button 1 pressed
+    // if button 3 pressed
     if(e.target.id==='3'){
       if(e.target.style.background==="white"){
 
@@ -108,7 +108,7 @@ const IndexPage = () => {
 
     }
 
-    // if button 1 pressed
+    // if button 4 pressed
     if(e.target.id==='4'){
       if(e.target.style.background==="white"){
 
@@ -132,7 +132,7 @@ const IndexPage = () => {
       }
 
     }
-    // if button 1 pressed
+    // if button 5 pressed
     if(e.target.id==='5'){
       if(e.target.style.background==="white"){
 
@@ -156,7 +156,7 @@ const IndexPage = () => {
       }
 
     }
-    // if button 1 pressed
+    // if button 6 pressed
     if(e.target.id==='6'){
       if(e.target.style.background==="white"){
 
@@ -181,7 +181,7 @@ const IndexPage = () => {
 
     }
 
-    // if button 1 pressed
+    // if button 7 pressed
     if(e.target.id==='7'){
       if(e.target.style.background==="white"){
 
@@ -205,7 +205,7 @@ const IndexPage = () => {
       }
 
     }
-    // if button 1 pressed
+    // if button 8 pressed
     if(e.target.id==='8'){
       if(e.target.style.background==="white"){
 
@@ -229,7 +229,7 @@ const IndexPage = () => {
       }
 
     }
-    // if button 1 pressed
+    // if button 9 pressed
     if(e.target.id==='9'){
       if(e.target.style.background==="white"){
 
@@ -253,8 +253,8 @@ const IndexPage = () => {
       }
 
     }
-    // if button 1 pressed
-    if(e.target.id==='1'){
+    // if button 10 pressed
+    if(e.target.id==='10'){
       if(e.target.style.background==="white"){
 
         setColour10('red')
@@ -277,8 +277,8 @@ const IndexPage = () => {
       }
 
     }
-    // if button 1 pressed
-    if(e.target.id==='1'){
+    // if button 11 pressed
+    if(e.target.id==='11'){
       if(e.target.style.background==="white"){
 
         setColour11('red')
