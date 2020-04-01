@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Password Input Program`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Password Scheme`,
+    description: `Password scheme for comp 3008. Testing passwords.`,
     author: `Japinder Sandhu`,
   },
   plugins: [
