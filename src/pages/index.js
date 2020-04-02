@@ -131,12 +131,16 @@ const IndexPage = () => {
 
             className="button2 buttonRadius"
             onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
             style={{background:colour.colour2}} > 2 </button>
           <button
             id="colour3"
 
             className="button3 buttonRadius"
             onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
             style={{background:colour.colour3}} > 3 </button>
 
           <button
@@ -144,6 +148,8 @@ const IndexPage = () => {
 
             className="button4 buttonRadius"
             onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
             style={{background:colour.colour4}} > 4 </button>
 
           <button
@@ -151,6 +157,8 @@ const IndexPage = () => {
 
             className="button5 buttonRadius"
             onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
             style={{background:colour.colour5}} > 5 </button>
 
           <button
@@ -158,6 +166,8 @@ const IndexPage = () => {
 
             className="button6 buttonRadius"
             onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
             style={{background:colour.colour6}} > 6 </button>
 
         </Row>
@@ -179,12 +189,16 @@ const IndexPage = () => {
 
             className="button8 buttonRadius"
             onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
             style={{background:colour.colour8}} > 8 </button>
           <button
             id="colour9"
 
             className="button9 buttonRadius"
             onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
             style={{background:colour.colour9}} > 9 </button>
 
           <button
@@ -192,6 +206,8 @@ const IndexPage = () => {
 
             className="button10 buttonRadius"
             onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
             style={{background:colour.colour10}} > 10 </button>
 
           <button
@@ -199,6 +215,8 @@ const IndexPage = () => {
 
             className="button11 buttonRadius"
             onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
             style={{background:colour.colour11}} > 11 </button>
 
 
