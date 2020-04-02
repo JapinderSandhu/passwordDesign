@@ -1,10 +1,22 @@
 # passwordDesign
 project for Comp3008
 
+Author: Japinder Sandhu
+
 ## 🚀 Quick start
 
 
-1.  **Start developing.**
+1.  **Install dependencies**
+
+    Install all the relevant dependencies listed in package.json, must have npm or yarn installed on your computer.
+
+    ```shell
+    cd passwordDesign/
+    npm install
+
+    ```
+
+2.  **Start developing.**
 
     Navigate into  site’s directory and start it up.
 
@@ -15,7 +27,7 @@ project for Comp3008
     ```
 
 
-2.  **Open the source code and start editing!**
+3.  **Open the source code and start editing!**
 
     Your site is now running at `http://localhost:8000`!
 

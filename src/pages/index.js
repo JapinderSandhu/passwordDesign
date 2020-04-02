@@ -28,6 +28,41 @@ const IndexPage = () => {
 
   });
 
+  function handleSubmit(e){
+
+     console.log(Object.keys(colour).length)
+
+     console.log(colour[0])
+
+     var emptySelections = 0
+
+     // loop through colour object of circles colours
+     for  (const [key, value] of Object.entries(colour) )  {
+
+       console.log( `Key => ${key} | Value => ${value}`)
+
+       // if empty/unset circle increment counter
+       if(value==='white'|value==='darkgray'){
+         emptySelections = emptySelections + 1
+       }
+
+     }
+
+     //:CHECK 1: if unset circles > 6 return invalid submission
+
+     console.log("emptySelections",emptySelections)
+
+     if(emptySelections>6){
+       console.log("Invalid Choose Set More Circles")
+     }
+
+     //:CHECK 2: if 3 consecutive colours are the same return invalid submission
+
+
+
+    }
+
+
 
   function handleClick(e) {
 
@@ -224,7 +259,7 @@ const IndexPage = () => {
 
         <Row className="mt-5 justify-content-center">
 
-           <Button className="m-3" variant="warning">Submit Password</Button>
+           <Button onClick={handleSubmit} className="m-3" variant="warning">Submit Password</Button>
            <Button className="m-3" variant="danger">Reset</Button>
 
         </Row>
