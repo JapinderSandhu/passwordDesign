@@ -12,18 +12,21 @@ import Button from 'react-bootstrap/Button';
 
 const IndexPage = () => {
 
-  const [colour1, setColour1] = useState('white');
-  const [colour2, setColour2] = useState('white');
-  const [colour3, setColour3] = useState('white');
-  const [colour4, setColour4] = useState('white');
-  const [colour5, setColour5] = useState('white');
-  const [colour6, setColour6] = useState('white');
-  const [colour7, setColour7] = useState('white');
-  const [colour8, setColour8] = useState('white');
-  const [colour9, setColour9] = useState('white');
-  const [colour10, setColour10] = useState('white');
-  const [colour11, setColour11] = useState('white');
+  const [colour, setColour] = useState({
 
+    colour1: "white",
+    colour2: "white",
+    colour3: "white",
+    colour4: "white",
+    colour5: "white",
+    colour6: "white",
+    colour7: "white",
+    colour8: "white",
+    colour9: "white",
+    colour10: "white",
+    colour11: "white"
+
+  });
 
 
   function handleClick(e) {
@@ -34,290 +37,71 @@ const IndexPage = () => {
 
     console.log(e.target.id)
 
-    // if button 1 pressed
-    if(e.target.id==='1'){
-      if(e.target.style.background==="white"){
 
-        setColour1('red')
+    if(e.target.style.background==="white"){
 
-      }
-      if(e.target.style.background==="red"){
-
-        setColour1('blue')
-
-      }
-      if(e.target.style.background==="blue"){
-
-        setColour1('green')
-
-      }
-      if(e.target.style.background==="green"){
-
-        setColour1('white')
-
-      }
-
-    }
-    // if button 2 pressed
-    if(e.target.id==='2'){
-      if(e.target.style.background==="white"){
-
-        setColour2('red')
-
-      }
-      if(e.target.style.background==="red"){
-
-        setColour2('blue')
-
-      }
-      if(e.target.style.background==="blue"){
-
-        setColour2('green')
-
-      }
-      if(e.target.style.background==="green"){
-
-        setColour2('white')
-
-      }
+      setColour({
+        ...colour,
+       [e.target.id]: 'red'
+     });
 
     }
 
-    // if button 3 pressed
-    if(e.target.id==='3'){
-      if(e.target.style.background==="white"){
+    if(e.target.style.background==="red"){
 
-        setColour3('red')
-
-      }
-      if(e.target.style.background==="red"){
-
-        setColour3('blue')
-
-      }
-      if(e.target.style.background==="blue"){
-
-        setColour3('green')
-
-      }
-      if(e.target.style.background==="green"){
-
-        setColour3('white')
-
-      }
+      setColour({
+        ...colour,
+       [e.target.id]: 'blue'
+     });
 
     }
 
-    // if button 4 pressed
-    if(e.target.id==='4'){
-      if(e.target.style.background==="white"){
+    if(e.target.style.background==="blue"){
 
-        setColour4('red')
-
-      }
-      if(e.target.style.background==="red"){
-
-        setColour4('blue')
-
-      }
-      if(e.target.style.background==="blue"){
-
-        setColour4('green')
-
-      }
-      if(e.target.style.background==="green"){
-
-        setColour4('white')
-
-      }
-
-    }
-    // if button 5 pressed
-    if(e.target.id==='5'){
-      if(e.target.style.background==="white"){
-
-        setColour5('red')
-
-      }
-      if(e.target.style.background==="red"){
-
-        setColour5('blue')
-
-      }
-      if(e.target.style.background==="blue"){
-
-        setColour5('green')
-
-      }
-      if(e.target.style.background==="green"){
-
-        setColour5('white')
-
-      }
-
-    }
-    // if button 6 pressed
-    if(e.target.id==='6'){
-      if(e.target.style.background==="white"){
-
-        setColour6('red')
-
-      }
-      if(e.target.style.background==="red"){
-
-        setColour6('blue')
-
-      }
-      if(e.target.style.background==="blue"){
-
-        setColour6('green')
-
-      }
-      if(e.target.style.background==="green"){
-
-        setColour6('white')
-
-      }
+      setColour({
+        ...colour,
+       [e.target.id]: 'green'
+     });
 
     }
 
-    // if button 7 pressed
-    if(e.target.id==='7'){
-      if(e.target.style.background==="white"){
+    if(e.target.style.background==="green"){
 
-        setColour7('red')
+      setColour({
+        ...colour,
+       [e.target.id]: 'darkgray'
+     });
 
-      }
-      if(e.target.style.background==="red"){
-
-        setColour7('blue')
-
-      }
-      if(e.target.style.background==="blue"){
-
-        setColour7('green')
-
-      }
-      if(e.target.style.background==="green"){
-
-        setColour7('white')
-
-      }
-
-    }
-    // if button 8 pressed
-    if(e.target.id==='8'){
-      if(e.target.style.background==="white"){
-
-        setColour8('red')
-
-      }
-      if(e.target.style.background==="red"){
-
-        setColour8('blue')
-
-      }
-      if(e.target.style.background==="blue"){
-
-        setColour8('green')
-
-      }
-      if(e.target.style.background==="green"){
-
-        setColour8('white')
-
-      }
-
-    }
-    // if button 9 pressed
-    if(e.target.id==='9'){
-      if(e.target.style.background==="white"){
-
-        setColour9('red')
-
-      }
-      if(e.target.style.background==="red"){
-
-        setColour9('blue')
-
-      }
-      if(e.target.style.background==="blue"){
-
-        setColour9('green')
-
-      }
-      if(e.target.style.background==="green"){
-
-        setColour9('white')
-
-      }
-
-    }
-    // if button 10 pressed
-    if(e.target.id==='10'){
-      if(e.target.style.background==="white"){
-
-        setColour10('red')
-
-      }
-      if(e.target.style.background==="red"){
-
-        setColour10('blue')
-
-      }
-      if(e.target.style.background==="blue"){
-
-        setColour10('green')
-
-      }
-      if(e.target.style.background==="green"){
-
-        setColour10('white')
-
-      }
-
-    }
-    // if button 11 pressed
-    if(e.target.id==='11'){
-      if(e.target.style.background==="white"){
-
-        setColour11('red')
-
-      }
-      if(e.target.style.background==="red"){
-
-        setColour11('blue')
-
-      }
-      if(e.target.style.background==="blue"){
-
-        setColour11('green')
-
-      }
-      if(e.target.style.background==="green"){
-
-        setColour11('white')
-
-      }
 
     }
 
+    if(e.target.style.background==="darkgray"){
 
+      setColour({
+        ...colour,
+       [e.target.id]: 'red'
+     });
+
+    }
 
 
   }
 
   function changeBackground(e) {
 
-    // e.target.style.background = 'DarkGray';
-    // e.target.style.border = '1px solid white';
+    if(e.target.style.background==='white'){
+      e.target.style.background = 'darkgray';
+      e.target.style.border = '1px solid white';
+    }
 
   }
 
   function changeBackgroundBack(e) {
-    //
-    // e.target.style.background = 'white';
-    // e.target.style.border = '1px solid black';
+
+    if(e.target.style.background==='darkgray'){
+      e.target.style.background = 'white';
+      e.target.style.border = '1px solid black';
+    }
 
   }
 
@@ -329,98 +113,101 @@ const IndexPage = () => {
 
       <Container className="buttonContainer" >
 
-        <Row lg={6} className="buttonWrapper justify-content-center">
+
+        <Row xl={6} lg={6} className="buttonWrapper justify-content-center">
+
 
           <button
-            id="1"
+            id="colour1"
             className="button1 buttonRadius"
             onClick={handleClick}
             onMouseOver={changeBackground}
             onMouseLeave={changeBackgroundBack}
 
-            style={{background:colour1}} > 1 </button>
+            style={{background:colour.colour1}} > 1 </button>
 
           <button
-            id="2"
+            id="colour2"
 
             className="button2 buttonRadius"
             onClick={handleClick}
-            style={{background:colour2}} > 2 </button>
+            style={{background:colour.colour2}} > 2 </button>
           <button
-            id="3"
+            id="colour3"
 
             className="button3 buttonRadius"
             onClick={handleClick}
-            style={{background:colour3}} > 3 </button>
+            style={{background:colour.colour3}} > 3 </button>
 
           <button
-            id="4"
+            id="colour4"
 
             className="button4 buttonRadius"
             onClick={handleClick}
-            style={{background:colour4}} > 4 </button>
+            style={{background:colour.colour4}} > 4 </button>
 
           <button
-            id="5"
+            id="colour5"
 
             className="button5 buttonRadius"
             onClick={handleClick}
-            style={{background:colour5}} > 5 </button>
+            style={{background:colour.colour5}} > 5 </button>
 
           <button
-            id="6"
+            id="colour6"
 
             className="button6 buttonRadius"
             onClick={handleClick}
-            style={{background:colour6}} > 6 </button>
+            style={{background:colour.colour6}} > 6 </button>
 
         </Row>
 
-        <Row lg={6} className="justify-content-center">
+        <Row xl={6} lg={6} className="justify-content-center">
 
           <button
-            id="7"
+            id="colour7"
 
             className="button7 buttonRadius"
             onClick={handleClick}
             onMouseOver={changeBackground}
             onMouseLeave={changeBackgroundBack}
 
-            style={{background:colour7}} > 7 </button>
+            style={{background:colour.colour7}} > 7 </button>
 
           <button
-            id="8"
+            id="colour8"
 
             className="button8 buttonRadius"
             onClick={handleClick}
-            style={{background:colour8}} > 8 </button>
+            style={{background:colour.colour8}} > 8 </button>
           <button
-            id="9"
+            id="colour9"
 
             className="button9 buttonRadius"
             onClick={handleClick}
-            style={{background:colour9}} > 9 </button>
+            style={{background:colour.colour9}} > 9 </button>
 
           <button
-            id="10"
+            id="colour10"
 
             className="button10 buttonRadius"
             onClick={handleClick}
-            style={{background:colour10}} > 10 </button>
+            style={{background:colour.colour10}} > 10 </button>
 
           <button
-            id="11"
+            id="colour11"
 
             className="button11 buttonRadius"
             onClick={handleClick}
-            style={{background:colour11}} > 11 </button>
+            style={{background:colour.colour11}} > 11 </button>
 
 
         </Row>
 
         <Row className="mt-5 justify-content-center">
 
-           <Button variant="warning">Submit</Button>
+           <Button className="m-3" variant="warning">Submit Password</Button>
+           <Button className="m-3" variant="danger">Reset</Button>
 
         </Row>
 
