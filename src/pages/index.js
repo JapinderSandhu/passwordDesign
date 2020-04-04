@@ -5,12 +5,35 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+
 
 
 
 
 
 const IndexPage = () => {
+
+
+  const [show, setShow] = useState(false);
+
+  function AlertDismissibleExample() {
+
+    if (show) {
+      return (
+        <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+          <p>
+            You chose too many of the same colours in a consecutive order.
+            Try changing it up! Mix it up fam! Bro it would be sick if u just chose a different colour?!?
+            Wow sick 3 colours to choose from, is gray even a colour? U can also choose gray to if u want.
+          </p>
+        </Alert>
+      );
+    }
+    return <div onClick={() => setShow(true)}></div>;
+  }
+
 
   const [colour, setColour] = useState({
 
@@ -36,6 +59,8 @@ const IndexPage = () => {
 
      var emptySelections = 0
 
+
+
      // loop through colour object of circles colours
      for  (const [key, value] of Object.entries(colour) )  {
 
@@ -45,6 +70,7 @@ const IndexPage = () => {
        if(value==='white'|value==='darkgray'){
          emptySelections = emptySelections + 1
        }
+
 
      }
 
@@ -56,7 +82,47 @@ const IndexPage = () => {
        console.log("Invalid Choose Set More Circles")
      }
 
-     //:CHECK 2: if 3 consecutive colours are the same return invalid submission
+     //:CHECK 2: if 3 consecutive colours are the same return invalid submission]
+
+     for ( var i = 0; i < Object.entries(colour).length - 3 ; i++){
+
+
+
+
+
+       if
+       (
+
+         (
+             // if circles are white or gray
+             !((Object.entries(colour)[i][1] ==='white'|| Object.entries(colour)[i][1] ==='darkgray')&&(Object.entries(colour)[i+1][1] ==='white'|| Object.entries(colour)[i+1][1] ==='darkgray')&&(Object.entries(colour)[i+2][1] ==='white'|| Object.entries(colour)[i+2][1] ==='darkgray'))
+
+
+         )
+
+
+         &&
+
+        // if 4 circles are same in consecutive order and the same colour
+         ( (Object.entries(colour)[i][1]===Object.entries(colour)[i+1][1]) && (Object.entries(colour)[i+1][1]===Object.entries(colour)[i+2][1]) && (Object.entries(colour)[i+2][1]===Object.entries(colour)[i+3][1]))
+
+      )
+
+
+
+     {
+
+         console.log("Consecutive colour1", Object.entries(colour)[i][1])
+         console.log("Consecutive colour2", Object.entries(colour)[i+1][1])
+         console.log("Consecutive colour3", Object.entries(colour)[i+2][1])
+
+         console.log("same")
+
+         setShow(true)
+
+       }
+
+     }
 
 
 
@@ -261,6 +327,12 @@ const IndexPage = () => {
 
            <Button onClick={handleSubmit} className="m-3" variant="warning">Submit Password</Button>
            <Button className="m-3" variant="danger">Reset</Button>
+
+        </Row>
+
+        <Row>
+
+          <AlertDismissibleExample />
 
         </Row>
 
