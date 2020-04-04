@@ -9,30 +9,16 @@ import Alert from 'react-bootstrap/Alert';
 
 
 
-
-
-
 const IndexPage = () => {
 
 
-  const [show, setShow] = useState(false);
+  const [showSame, setShowSame] = useState(false);
 
-  function AlertDismissibleExample() {
+  const [showFew, setShowFew] = useState(false);
 
-    if (show) {
-      return (
-        <Alert variant="danger" onClose={() => setShow(false)} dismissible>
-          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-          <p>
-            You chose too many of the same colours in a consecutive order.
-            Try changing it up! Mix it up fam! Bro it would be sick if u just chose a different colour?!?
-            Wow sick 3 colours to choose from, is gray even a colour? U can also choose gray to if u want.
-          </p>
-        </Alert>
-      );
-    }
-    return <div onClick={() => setShow(true)}></div>;
-  }
+  const [showSuccess, setShowSuccess] = useState(false);
+
+
 
 
   const [colour, setColour] = useState({
@@ -51,6 +37,55 @@ const IndexPage = () => {
 
   });
 
+
+  function AlertDismissible() {
+
+    if (showSame) {
+
+      return (
+        <Alert variant="danger" onClose={() => setShowSame(false)} dismissible>
+          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+          <p>
+            You chose too many of the same colours in a consecutive order.
+            Try changing it up!
+          </p>
+        </Alert>
+      );
+
+    }
+
+    if (showFew) {
+
+      return (
+        <Alert variant="warning" onClose={() => setShowFew(false)} dismissible>
+          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+          <p>
+            You did not choose enough colours
+          </p>
+        </Alert>
+      );
+
+    }
+
+    if (showSuccess) {
+
+      return (
+        <Alert variant="success" onClose={() => setShowSuccess(false)} dismissible>
+          <Alert.Heading>Success!</Alert.Heading>
+          <p>
+            You have set your password
+          </p>
+        </Alert>
+      );
+
+    }
+
+    return <div></div>;
+
+  }
+
+
+
   function handleSubmit(e){
 
      console.log(Object.keys(colour).length)
@@ -61,36 +96,38 @@ const IndexPage = () => {
 
 
 
-     // loop through colour object of circles colours
-     for  (const [key, value] of Object.entries(colour) )  {
+    // loop through colour object of circles colours
+    for  (const [key, value] of Object.entries(colour) )  {
 
-       console.log( `Key => ${key} | Value => ${value}`)
+     console.log( `Key => ${key} | Value => ${value}`)
 
-       // if empty/unset circle increment counter
-       if(value==='white'|value==='darkgray'){
-         emptySelections = emptySelections + 1
-       }
-
-
+     // if empty/unset circle increment counter
+     if(value==='white'|value==='darkgray'){
+       emptySelections = emptySelections + 1
      }
 
-     //:CHECK 1: if unset circles > 6 return invalid submission
 
-     console.log("emptySelections",emptySelections)
+    }
 
-     if(emptySelections>6){
+    //:CHECK 1: if unset circles > 6 return invalid submission
+
+    console.log("emptySelections",emptySelections)
+
+    if(emptySelections>6){
+       // display ALERT ERROR few circles chosen
        console.log("Invalid Choose Set More Circles")
-     }
+       setShowFew(true)
+    }
 
-     //:CHECK 2: if 3 consecutive colours are the same return invalid submission]
+    //:CHECK 2: if 3 consecutive colours are the same return invalid submission]
 
-     for ( var i = 0; i < Object.entries(colour).length - 3 ; i++){
-
-
-
+    for ( var i = 0; i < Object.entries(colour).length - 3 ; i++){
 
 
-       if
+
+
+
+      if
        (
 
          (
@@ -112,21 +149,23 @@ const IndexPage = () => {
 
      {
 
-         console.log("Consecutive colour1", Object.entries(colour)[i][1])
-         console.log("Consecutive colour2", Object.entries(colour)[i+1][1])
-         console.log("Consecutive colour3", Object.entries(colour)[i+2][1])
-
-         console.log("same")
-
-         setShow(true)
+          // alert warning when ERROR
+         setShowSame(true)
 
        }
 
-     }
-
-
 
     }
+
+    if(!(showFew&&showSame)){
+
+      setShowSuccess(true)
+
+    }
+
+
+
+  }
 
 
 
@@ -330,9 +369,9 @@ const IndexPage = () => {
 
         </Row>
 
-        <Row>
+        <Row xl={6} lg={6} className="mt-5 justify-content-center">
 
-          <AlertDismissibleExample />
+          <AlertDismissible />
 
         </Row>
 
