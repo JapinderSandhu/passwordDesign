@@ -215,17 +215,17 @@ const Test = ({ children }) => {
   function handleReset(e){
 
     setColour({
-      colour1: "red",
-      colour2: "red",
-      colour3: "red",
-      colour4: "blue",
-      colour5: "green",
+      colour1: "white",
+      colour2: "white",
+      colour3: "white",
+      colour4: "white",
+      colour5: "white",
       colour6: "white",
       colour7: "white",
-      colour8: "blue",
-      colour9: "green",
+      colour8: "white",
+      colour9: "white",
       colour10:"white",
-      colour11:"red"
+      colour11:"white"
 
    });
 
