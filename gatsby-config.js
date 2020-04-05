@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Password Scheme`,
+    title: `Password Testing`,
     description: `Password scheme for comp 3008. Testing passwords.`,
     author: `Japinder Sandhu`,
   },

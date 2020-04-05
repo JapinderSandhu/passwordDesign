@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
 import Layout from "../components/layout"
+import Test1 from "../components/test1"
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 
 
 
 const IndexPage = () => {
 
-
-  const [showSame, setShowSame] = useState(false);
-
-  const [showFew, setShowFew] = useState(false);
-
-  const [showSuccess, setShowSuccess] = useState(false);
-
-
-
+  const [showTest, setTestShow] = useState(false);
 
   const [colour, setColour] = useState({
 
@@ -37,137 +32,11 @@ const IndexPage = () => {
 
   });
 
+  function handleBeginTest(e){
 
-  function AlertDismissible() {
-
-    if (showSame) {
-
-      return (
-        <Alert variant="danger" onClose={() => setShowSame(false)} dismissible>
-          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-          <p>
-            You chose too many of the same colours in a consecutive order.
-            Try changing it up!
-          </p>
-        </Alert>
-      );
-
-    }
-
-    if (showFew) {
-
-      return (
-        <Alert variant="warning" onClose={() => setShowFew(false)} dismissible>
-          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-          <p>
-            You did not choose enough colours
-          </p>
-        </Alert>
-      );
-
-    }
-
-    if (showSuccess) {
-
-      return (
-        <Alert variant="success" onClose={() => setShowSuccess(false)} dismissible>
-          <Alert.Heading>Success!</Alert.Heading>
-          <p>
-            You have set your password
-          </p>
-        </Alert>
-      );
-
-    }
-
-    return <div></div>;
+    setTestShow(true)
 
   }
-
-
-
-  function handleSubmit(e){
-
-     console.log(Object.keys(colour).length)
-
-     console.log(colour[0])
-
-     var emptySelections = 0
-
-
-
-    // loop through colour object of circles colours
-    for  (const [key, value] of Object.entries(colour) )  {
-
-     console.log( `Key => ${key} | Value => ${value}`)
-
-     // if empty/unset circle increment counter
-     if(value==='white'|value==='darkgray'){
-       emptySelections = emptySelections + 1
-     }
-
-
-    }
-
-    //:CHECK 1: if unset circles > 6 return invalid submission
-
-    console.log("emptySelections",emptySelections)
-
-    if(emptySelections>6){
-       // display ALERT ERROR few circles chosen
-       console.log("Invalid Choose Set More Circles")
-       setShowFew(true)
-    }
-
-    //:CHECK 2: if 3 consecutive colours are the same return invalid submission]
-
-    for ( var i = 0; i < Object.entries(colour).length - 3 ; i++){
-
-
-
-
-
-      if
-       (
-
-         (
-             // if circles are white or gray
-             !((Object.entries(colour)[i][1] ==='white'|| Object.entries(colour)[i][1] ==='darkgray')&&(Object.entries(colour)[i+1][1] ==='white'|| Object.entries(colour)[i+1][1] ==='darkgray')&&(Object.entries(colour)[i+2][1] ==='white'|| Object.entries(colour)[i+2][1] ==='darkgray'))
-
-
-         )
-
-
-         &&
-
-        // if 4 circles are same in consecutive order and the same colour
-         ( (Object.entries(colour)[i][1]===Object.entries(colour)[i+1][1]) && (Object.entries(colour)[i+1][1]===Object.entries(colour)[i+2][1]) && (Object.entries(colour)[i+2][1]===Object.entries(colour)[i+3][1]))
-
-      )
-
-
-
-     {
-
-          // alert warning when ERROR
-         setShowSame(true)
-
-       }
-
-
-    }
-
-    if(!(showFew&&showSame)){
-
-      setShowSuccess(true)
-
-    }
-
-
-
-  }
-
-
 
   function handleClick(e) {
 
@@ -245,143 +114,83 @@ const IndexPage = () => {
 
   }
 
-  return(
-
-    <Layout>
 
 
+  if(showTest){
 
-      <Container className="buttonContainer" >
+    return(
+
+      <Layout>
+
+        <Test1/>
+
+      </Layout>
+
+    )
+
+  }
+
+  else{
+
+    return(
+
+      <Layout>
+
+        <Row>
+
+          <Jumbotron>
 
 
-        <Row xl={6} lg={6} className="buttonWrapper justify-content-center">
+            <Row className="justify-content-center">
 
 
-          <button
-            id="colour1"
-            className="button1 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
+                <h1>Tutorial</h1>
 
-            style={{background:colour.colour1}} > 1 </button>
+                <p className="mt-5 text-center">
+                  This is a simple circle, clicking the circle will change the colour. You can select one of 4 states for each circle.(Red,Blue,Green,Gray) Firstly you must select atleast 6 circles.
+                  <br></br><br></br>
+                  If you choose gray it is unset and you do not have to remember that circles state. You may disregard it.
+                  <br></br><br></br>
+                  Secondly you can not select more than 3 colours in a row.
+                  Press Begin Test to start
+                </p>
 
-          <button
-            id="colour2"
 
-            className="button2 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour2}} > 2 </button>
-          <button
-            id="colour3"
 
-            className="button3 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour3}} > 3 </button>
+                <button
+                  id="colour1"
+                  className="button button1 buttonRadius"
+                  onClick={handleClick}
+                  onMouseOver={changeBackground}
+                  onMouseLeave={changeBackgroundBack}
 
-          <button
-            id="colour4"
+                  style={{background:colour.colour1}} > </button>
 
-            className="button4 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour4}} > 4 </button>
 
-          <button
-            id="colour5"
 
-            className="button5 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour5}} > 5 </button>
+            </Row>
 
-          <button
-            id="colour6"
+            <Row className="mt-5 justify-content-center">
+              <Button onClick={handleBeginTest} variant="primary">Begin Test</Button>
 
-            className="button6 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour6}} > 6 </button>
+            </Row>
 
-        </Row>
 
-        <Row xl={6} lg={6} className="justify-content-center">
 
-          <button
-            id="colour7"
-
-            className="button7 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-
-            style={{background:colour.colour7}} > 7 </button>
-
-          <button
-            id="colour8"
-
-            className="button8 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour8}} > 8 </button>
-          <button
-            id="colour9"
-
-            className="button9 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour9}} > 9 </button>
-
-          <button
-            id="colour10"
-
-            className="button10 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour10}} > 10 </button>
-
-          <button
-            id="colour11"
-
-            className="button11 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour11}} > 11 </button>
+         </Jumbotron>
 
 
         </Row>
 
-        <Row className="mt-5 justify-content-center">
+      </Layout>
 
-           <Button onClick={handleSubmit} className="m-3" variant="warning">Submit Password</Button>
-           <Button className="m-3" variant="danger">Reset</Button>
+    )
 
-        </Row>
-
-        <Row xl={6} lg={6} className="mt-5 justify-content-center">
-
-          <AlertDismissible />
-
-        </Row>
-
-      </Container>
+  }
 
 
 
-    </Layout>
 
-  )
 
 }
 
