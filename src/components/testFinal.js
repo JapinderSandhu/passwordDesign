@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import Badge from 'react-bootstrap/Badge'
 import Jumbotron from 'react-bootstrap/Jumbotron';
 
 
@@ -12,7 +13,28 @@ import "./layout.css"
 
 const Test = ({ children }) => {
 
-  const [showTestConfirmation, setShowTestConfirmation] = useState(false);
+  const [attempt, setAttempt] = useState(1);
+
+  const [attemptError, setAttemptError] = useState(false);
+
+  const [attemptIncrement, setAttemptIncrement] = useState(false);
+
+
+  const [showFinalTest, setShowFinalTest] = useState(false);
+
+
+  const [showTest1, setShowTest1] = useState(true);
+
+  const [showTest2, setShowTest2] = useState(false);
+
+  const [showTest3, setShowTest3] = useState(false);
+
+  const [showContinueTest2, setshowContinueTest2] = useState(false);
+
+  const [showContinueTest3, setshowContinueTest3] = useState(false);
+
+  const [showContinueFinalTest, setshowContinueFinalTest] = useState(false);
+
 
   const [showSame, setShowSame] = useState(false);
 
@@ -23,18 +45,133 @@ const Test = ({ children }) => {
   const [colour, setColour] = useState({
 
     colour1: "white",
-    colour2: "white",
-    colour3: "white",
-    colour4: "white",
+    colour2: "red",
+    colour3: "green",
+    colour4: "blue",
     colour5: "white",
-    colour6: "white",
-    colour7: "white",
-    colour8: "white",
+    colour6: "green",
+    colour7: "green",
+    colour8: "green",
     colour9: "white",
-    colour10: "white",
-    colour11: "white"
+    colour10: "blue",
+    colour11: "red"
 
   });
+
+  const [colourTest, setColourTest] = useState({
+
+    colour1: "white",
+    colour2: "red",
+    colour3: "green",
+    colour4: "blue",
+    colour5: "white",
+    colour6: "green",
+    colour7: "green",
+    colour8: "green",
+    colour9: "white",
+    colour10: "blue",
+    colour11: "red"
+
+  });
+
+
+  function handleAttempt(){
+
+
+    handleReset()
+    setAttemptIncrement(false)
+    setShowFew(false)
+    setShowSame(false)
+    setAttempt(attempt + 1)
+
+
+  }
+
+  function handleContinueTest2(){
+
+    setColour({
+      colour1: "red",
+      colour2: "red",
+      colour3: "red",
+      colour4: "blue",
+      colour5: "green",
+      colour6: "white",
+      colour7: "white",
+      colour8: "blue",
+      colour9: "green",
+      colour10:"white",
+      colour11:"red"
+
+   });
+
+   setColourTest({
+     colour1: "red",
+     colour2: "red",
+     colour3: "red",
+     colour4: "blue",
+     colour5: "green",
+     colour6: "white",
+     colour7: "white",
+     colour8: "blue",
+     colour9: "green",
+     colour10:"white",
+     colour11:"red"
+
+  });
+
+
+   setshowContinueTest2(false)
+
+   setShowTest1(false)
+
+   setShowTest2(true)
+
+   setShowSuccess(false)
+
+  }
+  function handleContinueTest3(){
+
+    setColour({
+      colour1: "green",
+      colour2: "red",
+      colour3: "green",
+      colour4: "blue",
+      colour5: "green",
+      colour6: "white",
+      colour7: "white",
+      colour8: "white",
+      colour9: "green",
+      colour10:"white",
+      colour11:"red"
+
+   });
+
+   setColourTest({
+     colour1: "green",
+     colour2: "red",
+     colour3: "green",
+     colour4: "blue",
+     colour5: "green",
+     colour6: "white",
+     colour7: "white",
+     colour8: "white",
+     colour9: "green",
+     colour10:"white",
+     colour11:"red"
+
+  });
+
+
+
+   setshowContinueTest3(false)
+
+   setShowTest2(false)
+
+   setShowTest3(true)
+
+   setShowSuccess(false)
+
+  }
 
 
 
@@ -42,13 +179,18 @@ const Test = ({ children }) => {
 
     if (showSame) {
 
+
+
       return (
         <Alert variant="danger" onClose={() => setShowSame(false)} dismissible>
           <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
           <p>
             You chose too many of the same colours in a consecutive order.
-            Try changing it up!
+            Try changing it up! You have {3 - attempt} attempts left.
           </p>
+
+          <Button variant="danger" onClick={handleAttempt} >Try Again</Button>
+
         </Alert>
       );
 
@@ -56,12 +198,16 @@ const Test = ({ children }) => {
 
     if (showFew) {
 
+
       return (
-        <Alert variant="warning" onClose={() => setShowFew(false)} dismissible>
+        <Alert variant="danger" onClose={() => setShowFew(false)} dismissible>
           <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
           <p>
-            You did not choose enough colours
+            You did not choose enough colours. You have {3 - attempt} attempts left.
           </p>
+
+          <Button variant="danger" onClick={handleAttempt} >Try Again</Button>
+
         </Alert>
       );
 
@@ -72,13 +218,71 @@ const Test = ({ children }) => {
       return (
         <Alert variant="success" onClose={() => setShowSuccess(false)} dismissible>
           <Alert.Heading>Success!</Alert.Heading>
-          <p>
-            You have set your password
-          </p>
+          <div>
+
+            <Row className="justify-content-center text-center">
+
+              <p className="text-center">
+                The password is correct
+              </p>
+
+            </Row>
+
+            <Row className="justify-content-center text-center">
+
+              { showContinueTest2 && <Button onClick={handleContinueTest2} variant="success">Continue Test 2</Button> }
+
+              { showContinueTest3 && <Button onClick={handleContinueTest3} variant="success">Continue Test 3</Button> }
+
+              { showContinueFinalTest && <Button onClick={setShowFinalTest(true)} variant="success">Continue Final Test</Button> }
+
+
+            </Row>
+
+          </div>
+
         </Alert>
       );
 
     }
+
+    if (attemptIncrement){
+
+      return(
+
+        <Alert variant="danger" onClose={() => setShowSame(false)} dismissible>
+          <Alert.Heading>Oh snap! You entered the password incorrectly!</Alert.Heading>
+          <p>
+            You have {3 - attempt} attempts left
+          </p>
+
+          <Button variant="danger" onClick={handleAttempt} >Try Again</Button>
+
+        </Alert>
+
+      )
+
+    }
+
+    if (attemptError){
+
+      return(
+
+        <Alert variant="danger" onClose={() => setShowSame(false)} dismissible>
+          <Alert.Heading>Oh snap! You are out of attempts!</Alert.Heading>
+          <p>
+            You entered the password incorrectly
+          </p>
+
+          {/* Continue To Next Test */}
+          {/*<Button variant="danger" onClick={handleAttempt} >Try Again</Button>*/}
+
+        </Alert>
+
+      )
+
+    }
+
 
     return <div></div>;
 
@@ -87,7 +291,7 @@ const Test = ({ children }) => {
   function handleReset(e){
 
     setColour({
-      colour1: "darkgray",
+      colour1: "white",
       colour2: "white",
       colour3: "white",
       colour4: "white",
@@ -96,20 +300,23 @@ const Test = ({ children }) => {
       colour7: "white",
       colour8: "white",
       colour9: "white",
-      colour10: "white",
-      colour11: "white"
+      colour10:"white",
+      colour11:"white"
+
    });
+
+  }
+
+  function handleFinalTest(e){
+
 
   }
 
 
   function handleSubmit(e){
 
-     console.log(Object.keys(colour).length)
-
-     console.log(colour[0])
-
      var emptySelections = 0
+     var checkTest = 0
 
 
 
@@ -169,15 +376,59 @@ const Test = ({ children }) => {
           // alert warning when ERROR
          setShowSame(true)
 
+
+
+
        }
 
 
     }
 
-    if(!(showFew&&showSame)){
+
+    // check if the password is correct/ matches - valid
+    for ( var i = 0; i < Object.entries(colourTest).length ; i++){
+
+     // if empty/unset circle increment counter
+     if(Object.entries(colour)[i][1]===Object.entries(colourTest)[i][1]) {
+       checkTest = checkTest + 1
+     }
+
+
+
+
+    }
+
+    console.log("CheckTest",checkTest)
+    //if all 11 circles are correct
+    if(( !(showFew&&showSame) && (checkTest===11) ) ) {
 
       setShowSuccess(true)
 
+      if(showTest1){
+        setshowContinueTest2(true)
+
+      }
+      if(showTest2){
+        setshowContinueTest3(true)
+        setshowContinueTest2(false)
+        setShowTest2(false)
+
+
+      }
+      if(showTest3){
+
+        setshowContinueFinalTest(true)
+
+      }
+
+    }else if(attempt > 2){
+
+      //too many attempts
+      setAttemptError(true)
+
+
+    }else{
+      setAttemptIncrement(true)
     }
 
 
@@ -267,10 +518,66 @@ const Test = ({ children }) => {
 
     <Container className="buttonContainer" >
 
+      <Row className="mt-0 justify-content-center">
+
+        <Jumbotron className="mt-0 justify-content-center">
+
+          <Row className="mt-0 justify-content-center">
+
+            <h1>Final Test</h1>
+
+          </Row>
+
+          <Row className="mt-5 justify-content-center">
+
+              <p className="mt-3 mb-0 text-center">
+
+                You have 3 attemps. You must enter the password for:
+
+              </p>
+
+              {showTest1 && <h5 className="mt-3 mb-0 text-center"> Test 1</h5>}
+
+              {(showTest2 || showContinueTest3) && <h5 className="mt-3 mb-0 text-center">Test 2</h5>}
+
+              {showTest3 && <h5 className="mt-3 mb-0 text-center">Test 3</h5>}
+
+
+          </Row>
+
+          <Row className="mt-5 mb-0 justify-content-center">
+
+            {/*{ (showTest1 && !showContinueTest2) && <Button onClick={handleReset} variant="primary">Begin Test 1</Button> }
+
+            { showTest2 && <Button onClick={handleReset} variant="primary">Begin Test 2</Button> }
+
+            { showTest3 && <Button onClick={handleReset} variant="primary">Begin Test 3</Button> }*/}
+
+            <Badge pill variant="danger">
+              <h6> Attempt <Badge variant="light">{attempt}</Badge> </h6>
+            </Badge>
+
+          </Row>
+
+
+          <Row xl={6} lg={6} className="mt-3 mb-0 justify-content-center">
+
+            <AlertDismissible />
+
+          </Row>
 
 
 
-      <Row xl={6} lg={6} className="buttonWrapper justify-content-center">
+       </Jumbotron>
+
+
+      </Row>
+
+
+
+
+
+      <Row  className="buttonWrapper justify-content-center">
 
 
         <button
@@ -328,7 +635,7 @@ const Test = ({ children }) => {
 
       </Row>
 
-      <Row xl={6} lg={6} className="justify-content-center">
+      <Row  className="justify-content-center">
 
         <button
           id="colour7"
@@ -382,12 +689,6 @@ const Test = ({ children }) => {
 
          <Button onClick={handleSubmit} className="m-3" variant="warning">Submit Password</Button>
          <Button onClick={handleReset} className="m-3" variant="danger">Reset</Button>
-
-      </Row>
-
-      <Row xl={6} lg={6} className="mt-5 justify-content-center">
-
-        <AlertDismissible />
 
       </Row>
 

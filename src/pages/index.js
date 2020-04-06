@@ -140,11 +140,17 @@ const IndexPage = () => {
 
           <Jumbotron>
 
-
             <Row className="justify-content-center">
 
+              <h1>Introduction</h1>
 
-                <h1>Tutorial</h1>
+            </Row>
+
+
+            <Row className="justify-content-center">
+              
+                <h2>Tutorial</h2>
+
 
                 <p className="mt-5 text-center">
                   This is a simple circle, clicking the circle will change the colour. You can select one of 4 states for each circle.(Red,Blue,Green,Gray) Firstly you must select atleast 6 circles.

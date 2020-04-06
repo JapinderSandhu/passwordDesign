@@ -7,10 +7,15 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 
+import TestFinal from "../components/testFinal"
+
 
 import "./layout.css"
 
 const Test = ({ children }) => {
+
+  const [showFinalTest, setShowFinalTest] = useState(false);
+
 
   const [showTest1, setShowTest1] = useState(true);
 
@@ -21,6 +26,9 @@ const Test = ({ children }) => {
   const [showContinueTest2, setshowContinueTest2] = useState(false);
 
   const [showContinueTest3, setshowContinueTest3] = useState(false);
+
+  const [showContinueFinalTest, setshowContinueFinalTest] = useState(false);
+
 
   const [showSame, setShowSame] = useState(false);
 
@@ -194,13 +202,18 @@ const Test = ({ children }) => {
               </p>
 
             </Row>
+
             <Row className="justify-content-center text-center">
 
               { showContinueTest2 && <Button onClick={handleContinueTest2} variant="success">Continue Test 2</Button> }
 
               { showContinueTest3 && <Button onClick={handleContinueTest3} variant="success">Continue Test 3</Button> }
 
+              { showContinueFinalTest && <Button onClick={setShowFinalTest(true)} variant="success">Continue Final Test</Button> }
+
+
             </Row>
+
           </div>
 
         </Alert>
@@ -228,6 +241,11 @@ const Test = ({ children }) => {
       colour11:"white"
 
    });
+
+  }
+
+  function handleFinalTest(e){
+
 
   }
 
@@ -331,6 +349,11 @@ const Test = ({ children }) => {
 
 
       }
+      if(showTest3){
+
+        setshowContinueFinalTest(true)
+
+      }
 
     }
 
@@ -416,180 +439,201 @@ const Test = ({ children }) => {
 
   }
 
-  return (
-    <>
+  if(!showFinalTest){
+    return (
+      <>
 
-    <Container className="buttonContainer" >
+      <Container className="buttonContainer" >
 
 
-      <Row>
+        <Row>
 
-        <Jumbotron>
+          <Jumbotron>
 
+            <Row className="mt-0 justify-content-center">
 
-          <Row className="justify-content-center">
+              <h1>Introduction</h1>
 
+            </Row>
+            <Row className="mt-5 justify-content-center">
 
-              {showTest1 && <h1>Test 1</h1>}
+              <h2>Memorize Passwords</h2>
 
-              {showTest2 && <h1>Test 2</h1>}
+            </Row>
 
-              {showTest3 && <h1>Test 3</h1>}
 
+            <Row className="mt-5 justify-content-center">
 
-              <p className="mt-5 text-center">
-                Once you press start, the circles will all get reset and you will have to type in the password you see below.
-              </p>
 
+                {showTest1 && <h3>Test 1</h3>}
 
-          </Row>
+                {(showTest2 || showContinueTest3) && <h3>Test 2</h3>}
 
-          <Row className="mt-5 justify-content-center">
+                {showTest3 && <h3>Test 3</h3>}
 
-            { showTest1 && <Button onClick={handleReset} variant="primary">Begin Test 1</Button> }
 
-            { showTest2 && <Button onClick={handleReset} variant="primary">Begin Test 2</Button> }
+                <p className="mt-5 text-center">
+                  Once you press start, the circles will all get reset and you will have to type in the password you see below.
+                </p>
 
 
-          </Row>
+            </Row>
 
+            <Row className="mt-5 justify-content-center">
 
-          <Row xl={6} lg={6} className="mt-5 justify-content-center">
+              { (showTest1 && !showContinueTest2) && <Button onClick={handleReset} variant="primary">Begin Test 1</Button> }
 
-            <AlertDismissible />
+              { showTest2 && <Button onClick={handleReset} variant="primary">Begin Test 2</Button> }
 
-          </Row>
+              { showTest3 && <Button onClick={handleReset} variant="primary">Begin Test 3</Button> }
 
+            </Row>
 
 
-       </Jumbotron>
+            <Row xl={6} lg={6} className="mt-5 justify-content-center">
 
+              <AlertDismissible />
 
-      </Row>
+            </Row>
 
 
 
-      <Row xl={6} lg={6} className="buttonWrapper justify-content-center">
+         </Jumbotron>
 
 
-        <button
-          id="colour1"
-          className="button button1 buttonRadius"
-          onClick={handleClick}
-          onMouseOver={changeBackground}
-          onMouseLeave={changeBackgroundBack}
+        </Row>
 
-          style={{background:colour.colour1}} > 1 </button>
 
-        <button
-          id="colour2"
 
-          className="button button2 buttonRadius"
-          onClick={handleClick}
-          onMouseOver={changeBackground}
-          onMouseLeave={changeBackgroundBack}
-          style={{background:colour.colour2}} > 2 </button>
-        <button
-          id="colour3"
+        <Row className="buttonWrapper justify-content-center">
 
-          className="button button3 buttonRadius"
-          onClick={handleClick}
-          onMouseOver={changeBackground}
-          onMouseLeave={changeBackgroundBack}
-          style={{background:colour.colour3}} > 3 </button>
 
-        <button
-          id="colour4"
+          <button
+            id="colour1"
+            className="button button1 buttonRadius"
+            onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
 
-          className="button button4 buttonRadius"
-          onClick={handleClick}
-          onMouseOver={changeBackground}
-          onMouseLeave={changeBackgroundBack}
-          style={{background:colour.colour4}} > 4 </button>
+            style={{background:colour.colour1}} > 1 </button>
 
-        <button
-          id="colour5"
+          <button
+            id="colour2"
 
-          className="button button5 buttonRadius"
-          onClick={handleClick}
-          onMouseOver={changeBackground}
-          onMouseLeave={changeBackgroundBack}
-          style={{background:colour.colour5}} > 5 </button>
+            className="button button2 buttonRadius"
+            onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
+            style={{background:colour.colour2}} > 2 </button>
+          <button
+            id="colour3"
 
-        <button
-          id="colour6"
+            className="button button3 buttonRadius"
+            onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
+            style={{background:colour.colour3}} > 3 </button>
 
-          className="button button6 buttonRadius"
-          onClick={handleClick}
-          onMouseOver={changeBackground}
-          onMouseLeave={changeBackgroundBack}
-          style={{background:colour.colour6}} > 6 </button>
+          <button
+            id="colour4"
 
-      </Row>
+            className="button button4 buttonRadius"
+            onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
+            style={{background:colour.colour4}} > 4 </button>
 
-      <Row xl={6} lg={6} className="justify-content-center">
+          <button
+            id="colour5"
 
-        <button
-          id="colour7"
+            className="button button5 buttonRadius"
+            onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
+            style={{background:colour.colour5}} > 5 </button>
 
-          className="button button7 buttonRadius"
-          onClick={handleClick}
-          onMouseOver={changeBackground}
-          onMouseLeave={changeBackgroundBack}
+          <button
+            id="colour6"
 
-          style={{background:colour.colour7}} > 7 </button>
+            className="button button6 buttonRadius"
+            onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
+            style={{background:colour.colour6}} > 6 </button>
 
-        <button
-          id="colour8"
+        </Row>
 
-          className="button button8 buttonRadius"
-          onClick={handleClick}
-          onMouseOver={changeBackground}
-          onMouseLeave={changeBackgroundBack}
-          style={{background:colour.colour8}} > 8 </button>
-        <button
-          id="colour9"
+        <Row className="justify-content-center">
 
-          className="button button9 buttonRadius"
-          onClick={handleClick}
-          onMouseOver={changeBackground}
-          onMouseLeave={changeBackgroundBack}
-          style={{background:colour.colour9}} > 9 </button>
+          <button
+            id="colour7"
 
-        <button
-          id="colour10"
+            className="button button7 buttonRadius"
+            onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
 
-          className="button button10 buttonRadius"
-          onClick={handleClick}
-          onMouseOver={changeBackground}
-          onMouseLeave={changeBackgroundBack}
-          style={{background:colour.colour10}} > 10 </button>
+            style={{background:colour.colour7}} > 7 </button>
 
-        <button
-          id="colour11"
+          <button
+            id="colour8"
 
-          className="button button11 buttonRadius"
-          onClick={handleClick}
-          onMouseOver={changeBackground}
-          onMouseLeave={changeBackgroundBack}
-          style={{background:colour.colour11}} > 11 </button>
+            className="button button8 buttonRadius"
+            onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
+            style={{background:colour.colour8}} > 8 </button>
+          <button
+            id="colour9"
 
+            className="button button9 buttonRadius"
+            onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
+            style={{background:colour.colour9}} > 9 </button>
 
-      </Row>
+          <button
+            id="colour10"
 
-      <Row className="mt-5 justify-content-center">
+            className="button button10 buttonRadius"
+            onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
+            style={{background:colour.colour10}} > 10 </button>
 
-         <Button onClick={handleSubmit} className="m-3" variant="warning">Submit Password</Button>
-         <Button onClick={handleReset} className="m-3" variant="danger">Reset</Button>
+          <button
+            id="colour11"
 
-      </Row>
+            className="button button11 buttonRadius"
+            onClick={handleClick}
+            onMouseOver={changeBackground}
+            onMouseLeave={changeBackgroundBack}
+            style={{background:colour.colour11}} > 11 </button>
 
 
+        </Row>
 
-    </Container>
+        <Row className="mt-5 justify-content-center">
 
-    </>
-  )
+           <Button onClick={handleSubmit} className="m-3" variant="warning">Submit Password</Button>
+           <Button onClick={handleReset} className="m-3" variant="danger">Reset</Button>
+
+        </Row>
+
+
+
+      </Container>
+
+      </>
+    )
+  }
+  else{
+    return(
+
+      <TestFinal />
+
+    )
+  }
 }
 
 
