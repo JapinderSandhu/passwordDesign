@@ -446,7 +446,7 @@ const Test = ({ children }) => {
       <Container className="buttonContainer" >
 
 
-        <Row>
+        <Row className="mt-0 justify-content-center">
 
           <Jumbotron>
 
@@ -461,21 +461,19 @@ const Test = ({ children }) => {
 
             </Row>
 
-
             <Row className="mt-5 justify-content-center">
+              {showTest1 && <h3 className="text-center">Test 1</h3>}
 
+              {(showTest2 || showContinueTest3) && <h3>Test 2</h3>}
 
-                {showTest1 && <h3>Test 1</h3>}
+              {showTest3 && <h3>Test 3</h3>}
 
-                {(showTest2 || showContinueTest3) && <h3>Test 2</h3>}
+            </Row>
 
-                {showTest3 && <h3>Test 3</h3>}
-
-
-                <p className="mt-5 text-center">
+            <Row className="mt-1 justify-content-center">
+                <p className="mt-1 text-center">
                   Once you press start, the circles will all get reset and you will have to type in the password you see below.
                 </p>
-
 
             </Row>
 
@@ -490,7 +488,7 @@ const Test = ({ children }) => {
             </Row>
 
 
-            <Row xl={6} lg={6} className="mt-5 justify-content-center">
+            <Row className="mt-5 justify-content-center">
 
               <AlertDismissible />
 

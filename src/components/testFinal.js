@@ -8,10 +8,18 @@ import Alert from 'react-bootstrap/Alert';
 import Badge from 'react-bootstrap/Badge'
 import Jumbotron from 'react-bootstrap/Jumbotron';
 
+import FinalReport from "../components/testFinalReport"
+
+
+
 
 import "./layout.css"
 
 const Test = ({ children }) => {
+
+
+  const [testActive, settestActive] = useState(false);
+
 
   const [attempt, setAttempt] = useState(1);
 
@@ -76,6 +84,41 @@ const Test = ({ children }) => {
 
   });
 
+  const [logs, setLogs] = useState([]);
+
+
+
+  function handleBeginTest(test){
+
+
+    // handleReset()
+
+    settestActive(true)
+
+    // log start time
+    var date = new Date().getDate(); //Current Date
+    var month = new Date().getMonth() + 1; //Current Month
+    var year = new Date().getFullYear(); //Current Year
+    var hours = new Date().getHours(); //Current Hours
+    var min = new Date().getMinutes(); //Current Minutes
+    var sec = new Date().getSeconds(); //Current Seconds
+
+    var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min)
+
+
+
+    setLogs(logs => [...logs, [timeStamp,"userid","Text21",test,"start"] ] )
+
+    // console.log([timeStamp,"userid","Text21",test,"start"])
+
+    console.log(logs)
+
+
+
+
+
+  }
+
 
   function handleAttempt(){
 
@@ -121,6 +164,7 @@ const Test = ({ children }) => {
 
   });
 
+   settestActive(false)
 
    setshowContinueTest2(false)
 
@@ -170,6 +214,7 @@ const Test = ({ children }) => {
   });
 
 
+   settestActive(false)
 
    setshowContinueTest3(false)
 
@@ -331,7 +376,7 @@ const Test = ({ children }) => {
   }
 
 
-  function handleSubmit(e){
+  function handleSubmit(test){
 
      var emptySelections = 0
      var checkTest = 0
@@ -359,6 +404,23 @@ const Test = ({ children }) => {
        // display ALERT ERROR few circles chosen
        console.log("Invalid Choose Set More Circles")
        setShowFew(true)
+       // log start time
+       var date = new Date().getDate(); //Current Date
+       var month = new Date().getMonth() + 1; //Current Month
+       var year = new Date().getFullYear(); //Current Year
+       var hours = new Date().getHours(); //Current Hours
+       var min = new Date().getMinutes(); //Current Minutes
+       var sec = new Date().getSeconds(); //Current Seconds
+
+       var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min)
+
+
+
+       setLogs(logs => [...logs, [timeStamp,"userid","Text21",test,"submitError"] ] )
+
+       // console.log([timeStamp,"userid","Text21",test,"start"])
+
+       console.log(logs)
     }
 
     //:CHECK 2: if 3 consecutive colours are the same return invalid submission]
@@ -393,6 +455,23 @@ const Test = ({ children }) => {
 
           // alert warning when ERROR
          setShowSame(true)
+         // log start time
+         var date = new Date().getDate(); //Current Date
+         var month = new Date().getMonth() + 1; //Current Month
+         var year = new Date().getFullYear(); //Current Year
+         var hours = new Date().getHours(); //Current Hours
+         var min = new Date().getMinutes(); //Current Minutes
+         var sec = new Date().getSeconds(); //Current Seconds
+
+         var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min)
+
+
+
+         setLogs(logs => [...logs, [timeStamp,"userid","Text21",test,"submitError"] ] )
+
+         // console.log([timeStamp,"userid","Text21",test,"start"])
+
+         console.log(logs)
 
 
 
@@ -422,6 +501,22 @@ const Test = ({ children }) => {
 
       setShowSuccess(true)
 
+      // log start time
+      var date = new Date().getDate(); //Current Date
+      var month = new Date().getMonth() + 1; //Current Month
+      var year = new Date().getFullYear(); //Current Year
+      var hours = new Date().getHours(); //Current Hours
+      var min = new Date().getMinutes(); //Current Minutes
+      var sec = new Date().getSeconds(); //Current Seconds
+
+      var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min)
+
+
+
+      setLogs(logs => [...logs, [timeStamp,"userid","Text21",test,"submitSuccess"] ] )
+
+
+
       if(showTest1){
         setshowContinueTest2(true)
 
@@ -443,6 +538,23 @@ const Test = ({ children }) => {
 
       //too many attempts
       setAttemptError(true)
+      // log start time
+      var date = new Date().getDate(); //Current Date
+      var month = new Date().getMonth() + 1; //Current Month
+      var year = new Date().getFullYear(); //Current Year
+      var hours = new Date().getHours(); //Current Hours
+      var min = new Date().getMinutes(); //Current Minutes
+      var sec = new Date().getSeconds(); //Current Seconds
+
+      var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min)
+
+
+
+      setLogs(logs => [...logs, [timeStamp,"userid","Text21",test,"submitError"] ] )
+
+      // console.log([timeStamp,"userid","Text21",test,"start"])
+
+      console.log(logs)
 
       if(showTest1){
         setshowContinueTest2(true)
@@ -582,22 +694,33 @@ const Test = ({ children }) => {
 
             </Row>
 
+
+
+
             <Row className="mt-5 mb-0 justify-content-center">
 
-              {/*{ (showTest1 && !showContinueTest2) && <Button onClick={handleReset} variant="primary">Begin Test 1</Button> }
+              { (showTest1 && !showContinueTest2) && <Button onClick={() => handleBeginTest("test1")} variant="primary">Begin Test 1</Button> }
 
-              { showTest2 && <Button onClick={handleReset} variant="primary">Begin Test 2</Button> }
+              { showTest2 && <Button onClick={() => handleBeginTest("test2")} variant="primary">Begin Test 2</Button> }
 
-              { showTest3 && <Button onClick={handleReset} variant="primary">Begin Test 3</Button> }*/}
+              { showTest3 && <Button onClick={() => handleBeginTest("test3")} variant="primary">Begin Test 3</Button> }
 
-              <Badge pill variant="danger">
-                <h6> Attempt <Badge variant="light">{attempt}</Badge> </h6>
+              <Badge pill variant="danger" >
+                <h6 > Attempt <Badge variant="light">{attempt}</Badge> </h6>
               </Badge>
 
             </Row>
 
+            {testActive && <Row className="mt-5 justify-content-center">
 
-            <Row xl={6} lg={6} className="mt-3 mb-0 justify-content-center">
+              {/* stopwatch */}
+
+
+            </Row>}
+
+
+
+            <Row  className="mt-3 mb-0 justify-content-center">
 
               <AlertDismissible />
 
@@ -614,120 +737,131 @@ const Test = ({ children }) => {
 
 
 
-        <Row  className="buttonWrapper justify-content-center">
+  {testActive && <div>
+
+         <Row  className="buttonWrapper justify-content-center">
 
 
-          <button
-            id="colour1"
-            className="button button1 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
+                <button
+                  id="colour1"
+                  className="button button1 buttonRadius"
+                  onClick={handleClick}
+                  onMouseOver={changeBackground}
+                  onMouseLeave={changeBackgroundBack}
 
-            style={{background:colour.colour1}} > 1 </button>
+                  style={{background:colour.colour1}} > 1 </button>
 
-          <button
-            id="colour2"
+                <button
+                  id="colour2"
 
-            className="button button2 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour2}} > 2 </button>
-          <button
-            id="colour3"
+                  className="button button2 buttonRadius"
+                  onClick={handleClick}
+                  onMouseOver={changeBackground}
+                  onMouseLeave={changeBackgroundBack}
+                  style={{background:colour.colour2}} > 2 </button>
+                <button
+                  id="colour3"
 
-            className="button button3 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour3}} > 3 </button>
+                  className="button button3 buttonRadius"
+                  onClick={handleClick}
+                  onMouseOver={changeBackground}
+                  onMouseLeave={changeBackgroundBack}
+                  style={{background:colour.colour3}} > 3 </button>
 
-          <button
-            id="colour4"
+                <button
+                  id="colour4"
 
-            className="button button4 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour4}} > 4 </button>
+                  className="button button4 buttonRadius"
+                  onClick={handleClick}
+                  onMouseOver={changeBackground}
+                  onMouseLeave={changeBackgroundBack}
+                  style={{background:colour.colour4}} > 4 </button>
 
-          <button
-            id="colour5"
+                <button
+                  id="colour5"
 
-            className="button button5 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour5}} > 5 </button>
+                  className="button button5 buttonRadius"
+                  onClick={handleClick}
+                  onMouseOver={changeBackground}
+                  onMouseLeave={changeBackgroundBack}
+                  style={{background:colour.colour5}} > 5 </button>
 
-          <button
-            id="colour6"
+                <button
+                  id="colour6"
 
-            className="button button6 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour6}} > 6 </button>
+                  className="button button6 buttonRadius"
+                  onClick={handleClick}
+                  onMouseOver={changeBackground}
+                  onMouseLeave={changeBackgroundBack}
+                  style={{background:colour.colour6}} > 6 </button>
 
-        </Row>
+              </Row>
 
-        <Row  className="justify-content-center">
+              <Row  className="justify-content-center">
 
-          <button
-            id="colour7"
+                <button
+                  id="colour7"
 
-            className="button button7 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
+                  className="button button7 buttonRadius"
+                  onClick={handleClick}
+                  onMouseOver={changeBackground}
+                  onMouseLeave={changeBackgroundBack}
 
-            style={{background:colour.colour7}} > 7 </button>
+                  style={{background:colour.colour7}} > 7 </button>
 
-          <button
-            id="colour8"
+                <button
+                  id="colour8"
 
-            className="button button8 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour8}} > 8 </button>
-          <button
-            id="colour9"
+                  className="button button8 buttonRadius"
+                  onClick={handleClick}
+                  onMouseOver={changeBackground}
+                  onMouseLeave={changeBackgroundBack}
+                  style={{background:colour.colour8}} > 8 </button>
+                <button
+                  id="colour9"
 
-            className="button button9 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour9}} > 9 </button>
+                  className="button button9 buttonRadius"
+                  onClick={handleClick}
+                  onMouseOver={changeBackground}
+                  onMouseLeave={changeBackgroundBack}
+                  style={{background:colour.colour9}} > 9 </button>
 
-          <button
-            id="colour10"
+                <button
+                  id="colour10"
 
-            className="button button10 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour10}} > 10 </button>
+                  className="button button10 buttonRadius"
+                  onClick={handleClick}
+                  onMouseOver={changeBackground}
+                  onMouseLeave={changeBackgroundBack}
+                  style={{background:colour.colour10}} > 10 </button>
 
-          <button
-            id="colour11"
+                <button
+                  id="colour11"
 
-            className="button button11 buttonRadius"
-            onClick={handleClick}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour11}} > 11 </button>
+                  className="button button11 buttonRadius"
+                  onClick={handleClick}
+                  onMouseOver={changeBackground}
+                  onMouseLeave={changeBackgroundBack}
+                  style={{background:colour.colour11}} > 11 </button>
 
 
-        </Row>
+              </Row>
 
-        <Row className="mt-5 justify-content-center">
+              <Row className="mt-5 justify-content-center">
 
-           <Button onClick={handleSubmit} className="m-3" variant="warning">Submit Password</Button>
-           <Button onClick={handleReset} className="m-3" variant="danger">Reset</Button>
+                { (showTest1 && !showContinueTest2) && <Button onClick={() => handleSubmit("test1")} className="m-3" variant="warning">Submit Password</Button> }
 
-        </Row>
+                { showTest2 && <Button onClick={() => handleSubmit("test2")} className="m-3" variant="warning">Submit Password</Button> }
+
+                { showTest3 && <Button onClick={() => handleSubmit("test3")} className="m-3" variant="warning">Submit Password</Button> }
+
+
+
+                 <Button onClick={handleReset} className="m-3" variant="danger">Reset</Button>
+
+              </Row>
+
+        </div>}
 
       </Container>
 
@@ -737,7 +871,7 @@ const Test = ({ children }) => {
   }else{
 
     return(
-      <div>THIS IS THE RESULTS PAGE</div>
+      <FinalReport logs={logs}/>
     )
   }
 }
