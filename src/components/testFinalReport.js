@@ -27,6 +27,16 @@ const FinalReport = logs => {
 
     <div>
 
+      <Jumbotron className="mt-0 justify-content-center">
+
+        <Row className="mt-0 justify-content-center">
+
+          <h1>Final Report</h1>
+
+        </Row>
+
+     </Jumbotron>
+
       <Table striped bordered hover>
 
         <thead>

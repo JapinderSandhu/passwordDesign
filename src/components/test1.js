@@ -40,15 +40,16 @@ const Test = ({ children }) => {
 
     colour1: "white",
     colour2: "red",
-    colour3: "green",
+    colour3: "red",
     colour4: "blue",
     colour5: "white",
-    colour6: "green",
-    colour7: "green",
-    colour8: "green",
+    colour6: "white",
+    colour7: "white",
+    colour8: "white",
     colour9: "white",
     colour10: "blue",
-    colour11: "red"
+    colour11: "red",
+    colour12: "red"
 
   });
 
@@ -56,15 +57,16 @@ const Test = ({ children }) => {
 
     colour1: "white",
     colour2: "red",
-    colour3: "green",
+    colour3: "red",
     colour4: "blue",
     colour5: "white",
-    colour6: "green",
-    colour7: "green",
-    colour8: "green",
+    colour6: "white",
+    colour7: "white",
+    colour8: "white",
     colour9: "white",
     colour10: "blue",
-    colour11: "red"
+    colour11: "red",
+    colour12: "red"
 
   });
 
@@ -76,14 +78,16 @@ const Test = ({ children }) => {
       colour1: "red",
       colour2: "red",
       colour3: "red",
-      colour4: "blue",
-      colour5: "green",
-      colour6: "white",
+      colour4: "white",
+      colour5: "white",
+      colour6: "blue",
       colour7: "white",
-      colour8: "blue",
-      colour9: "green",
-      colour10:"white",
-      colour11:"red"
+      colour8: "white",
+      colour9: "white",
+      colour10:"red",
+      colour11:"red",
+      colour12:"red"
+
 
    });
 
@@ -91,14 +95,15 @@ const Test = ({ children }) => {
      colour1: "red",
      colour2: "red",
      colour3: "red",
-     colour4: "blue",
-     colour5: "green",
-     colour6: "white",
+     colour4: "white",
+     colour5: "white",
+     colour6: "blue",
      colour7: "white",
-     colour8: "blue",
-     colour9: "green",
-     colour10:"white",
-     colour11:"red"
+     colour8: "white",
+     colour9: "white",
+     colour10:"red",
+     colour11:"red",
+     colour12:"red"
 
   });
 
@@ -115,32 +120,35 @@ const Test = ({ children }) => {
   function handleContinueTest3(){
 
     setColour({
-      colour1: "green",
-      colour2: "red",
-      colour3: "green",
-      colour4: "blue",
-      colour5: "green",
-      colour6: "white",
-      colour7: "white",
+      colour1: "blue",
+      colour2: "blue",
+      colour3: "blue",
+      colour4: "white",
+      colour5: "red",
+      colour6: "red",
+      colour7: "red",
       colour8: "white",
       colour9: "green",
-      colour10:"white",
-      colour11:"red"
+      colour10:"green",
+      colour11:"green",
+      colour12:"white"
+
 
    });
 
    setColourTest({
-     colour1: "green",
-     colour2: "red",
-     colour3: "green",
-     colour4: "blue",
-     colour5: "green",
-     colour6: "white",
-     colour7: "white",
+     colour1: "blue",
+     colour2: "blue",
+     colour3: "blue",
+     colour4: "white",
+     colour5: "red",
+     colour6: "red",
+     colour7: "red",
      colour8: "white",
      colour9: "green",
-     colour10:"white",
-     colour11:"red"
+     colour10:"green",
+     colour11:"green",
+     colour12:"white"
 
   });
 
@@ -238,7 +246,8 @@ const Test = ({ children }) => {
       colour8: "white",
       colour9: "white",
       colour10:"white",
-      colour11:"white"
+      colour11:"white",
+      colour12:"white"
 
    });
 
@@ -334,7 +343,7 @@ const Test = ({ children }) => {
 
     console.log("CheckTest",checkTest)
     //if all 11 circles are correct
-    if(( !(showFew&&showSame) && (checkTest===11) ) ) {
+    if(( !(showFew&&showSame) && (checkTest===12) ) ) {
 
       setShowSuccess(true)
 
@@ -462,11 +471,11 @@ const Test = ({ children }) => {
             </Row>
 
             <Row className="mt-5 justify-content-center">
-              {showTest1 && <h3 className="text-center">Test 1</h3>}
+              {showTest1 && <h3 className="text-center">Test 1 Grocery</h3>}
 
-              {(showTest2 || showContinueTest3) && <h3>Test 2</h3>}
+              {(showTest2 || showContinueTest3) && <h3>Test 2 Bank</h3>}
 
-              {showTest3 && <h3>Test 3</h3>}
+              {showTest3 && <h3>Test 3 Email</h3>}
 
             </Row>
 
@@ -479,11 +488,11 @@ const Test = ({ children }) => {
 
             <Row className="mt-5 justify-content-center">
 
-              { (showTest1 && !showContinueTest2) && <Button onClick={handleReset} variant="primary">Begin Test 1</Button> }
+              { (showTest1 && !showContinueTest2) && <Button onClick={handleReset} variant="primary">Begin Test 1 Grocery</Button> }
 
-              { showTest2 && <Button onClick={handleReset} variant="primary">Begin Test 2</Button> }
+              { showTest2 && <Button onClick={handleReset} variant="primary">Begin Test 2 Bank</Button> }
 
-              { showTest3 && <Button onClick={handleReset} variant="primary">Begin Test 3</Button> }
+              { showTest3 && <Button onClick={handleReset} variant="primary">Begin Test 3 Email</Button> }
 
             </Row>
 
@@ -513,7 +522,7 @@ const Test = ({ children }) => {
             onMouseOver={changeBackground}
             onMouseLeave={changeBackgroundBack}
 
-            style={{background:colour.colour1}} > 1 </button>
+            style={{background:colour.colour1}} >  </button>
 
           <button
             id="colour2"
@@ -522,7 +531,7 @@ const Test = ({ children }) => {
             onClick={handleClick}
             onMouseOver={changeBackground}
             onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour2}} > 2 </button>
+            style={{background:colour.colour2}} >  </button>
           <button
             id="colour3"
 
@@ -530,7 +539,7 @@ const Test = ({ children }) => {
             onClick={handleClick}
             onMouseOver={changeBackground}
             onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour3}} > 3 </button>
+            style={{background:colour.colour3}} >  </button>
 
           <button
             id="colour4"
@@ -539,7 +548,7 @@ const Test = ({ children }) => {
             onClick={handleClick}
             onMouseOver={changeBackground}
             onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour4}} > 4 </button>
+            style={{background:colour.colour4}} >  </button>
 
           <button
             id="colour5"
@@ -548,7 +557,7 @@ const Test = ({ children }) => {
             onClick={handleClick}
             onMouseOver={changeBackground}
             onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour5}} > 5 </button>
+            style={{background:colour.colour5}} >  </button>
 
           <button
             id="colour6"
@@ -557,7 +566,7 @@ const Test = ({ children }) => {
             onClick={handleClick}
             onMouseOver={changeBackground}
             onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour6}} > 6 </button>
+            style={{background:colour.colour6}} >  </button>
 
         </Row>
 
@@ -571,7 +580,7 @@ const Test = ({ children }) => {
             onMouseOver={changeBackground}
             onMouseLeave={changeBackgroundBack}
 
-            style={{background:colour.colour7}} > 7 </button>
+            style={{background:colour.colour7}} >  </button>
 
           <button
             id="colour8"
@@ -580,7 +589,7 @@ const Test = ({ children }) => {
             onClick={handleClick}
             onMouseOver={changeBackground}
             onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour8}} > 8 </button>
+            style={{background:colour.colour8}} >  </button>
           <button
             id="colour9"
 
@@ -588,7 +597,7 @@ const Test = ({ children }) => {
             onClick={handleClick}
             onMouseOver={changeBackground}
             onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour9}} > 9 </button>
+            style={{background:colour.colour9}} >  </button>
 
           <button
             id="colour10"
@@ -597,7 +606,7 @@ const Test = ({ children }) => {
             onClick={handleClick}
             onMouseOver={changeBackground}
             onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour10}} > 10 </button>
+            style={{background:colour.colour10}} > </button>
 
           <button
             id="colour11"
@@ -606,7 +615,17 @@ const Test = ({ children }) => {
             onClick={handleClick}
             onMouseOver={changeBackground}
             onMouseLeave={changeBackgroundBack}
-            style={{background:colour.colour11}} > 11 </button>
+            style={{background:colour.colour11}} > </button>
+
+            <button
+              id="colour12"
+
+              className="button button11 buttonRadius"
+              onClick={handleClick}
+              onMouseOver={changeBackground}
+              onMouseLeave={changeBackgroundBack}
+              style={{background:colour.colour12}} > </button>
+
 
 
         </Row>
