@@ -93,7 +93,7 @@ const Test = ({ children }) => {
   function handleBeginTest(test){
 
 
-    // handleReset()
+    handleReset()
 
     settestActive(true)
 
