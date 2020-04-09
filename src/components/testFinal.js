@@ -105,7 +105,7 @@ const Test = ({ children }) => {
     var min = new Date().getMinutes(); //Current Minutes
     var sec = new Date().getSeconds(); //Current Seconds
 
-    var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min)
+    var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min,":",sec)
 
 
 
@@ -420,7 +420,7 @@ const Test = ({ children }) => {
        var min = new Date().getMinutes(); //Current Minutes
        var sec = new Date().getSeconds(); //Current Seconds
 
-       var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min)
+       var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min,":",sec)
 
 
 
@@ -471,7 +471,7 @@ const Test = ({ children }) => {
          var min = new Date().getMinutes(); //Current Minutes
          var sec = new Date().getSeconds(); //Current Seconds
 
-         var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min)
+         var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min,":",sec)
 
 
 
@@ -517,7 +517,7 @@ const Test = ({ children }) => {
       var min = new Date().getMinutes(); //Current Minutes
       var sec = new Date().getSeconds(); //Current Seconds
 
-      var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min)
+      var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min,":",sec)
 
 
 
@@ -554,7 +554,7 @@ const Test = ({ children }) => {
       var min = new Date().getMinutes(); //Current Minutes
       var sec = new Date().getSeconds(); //Current Seconds
 
-      var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min)
+      var timeStamp = (year.toString()).concat("-",month,"-",date," ",hours,":",min,":",sec)
 
 
 
