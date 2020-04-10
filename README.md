@@ -1,7 +1,11 @@
 # passwordDesign
-project for Comp3008
+Comp 3008 Project 2 Part 2:
 
-Author: Japinder Sandhu
+Team: HCI-2020-Video
+
+Members: Vineel Boddula 101018032 Alexander Nguyen 100908039 Japinder Sandhu 101021899 Balreet Kaur Dhillon 101082305
+
+
 
 ## 🚀 Quick start
 
@@ -12,6 +16,7 @@ Author: Japinder Sandhu
 
     ```shell
     cd passwordDesign/
+    npm install -g gatsby-cli
     npm install
 
     ```
